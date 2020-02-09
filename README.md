@@ -26,3 +26,12 @@ Note when you're following the instructions, the files don't have to be written 
 [A simple tutorial](https://howchoo.com/g/ytzjyzy4m2e/build-a-simple-raspberry-pi-led-power-status-indicator) 
 took care of the LED portion of the switch. 
 
+### The cellular modem
+This is a giant pain, and I still don't know if I can actually get it to work or not.
+[The USB modem I purchased](https://www.amazon.com/gp/product/B07X129SNS/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1) took six weeks to arrive and came with almost no instructions. It took awhile to even figure out where to put the SIM card. Definitely not recommended. But it's what I have, and it _should_ work. I've copied the Linux instructions found on the modem itself here, but so far I don't trust them. We'll see.
+
+
+
+
+
+
