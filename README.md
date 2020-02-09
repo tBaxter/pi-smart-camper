@@ -22,6 +22,7 @@ this is pretty nifty. It's recessed so it won't get toggled accidentally and inc
 ### Wiring the power switch
 For the power switch, clone the [Pi Power Button repo](https://github.com/Howchoo/pi-power-button) and 
 [follow the related instructions](https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi). 
+Note when you're following the instructions, the files don't have to be written -- they're in the repo. Just use `cp` to move them where you need them and be sure to `chmod` them to set the permissions.
 [A simple tutorial](https://howchoo.com/g/ytzjyzy4m2e/build-a-simple-raspberry-pi-led-power-status-indicator) 
-took care of the LED portion of the switch.
+took care of the LED portion of the switch. 
 
