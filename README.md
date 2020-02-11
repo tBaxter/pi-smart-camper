@@ -12,12 +12,7 @@ Here's what's at least tentatively planned:
 * An external power button, since the Pi will be hard-wired into the trailer.
 * A simple web server so I can monitor things with my phone.
 
-## Here's the nuts and bolts:
-[12V-5V stepdown converter](https://www.amazon.com/gp/product/B07H7X37T6/ref=ppx_yo_dt_b_asin_title_o02_s01?ie=UTF8&psc=1)
-to take the camper's 12V system power down to something Pi-Friendly
-
-[Power button with LED](https://www.amazon.com/gp/product/B07PPDNPW9/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1)
-this is pretty nifty. It's recessed so it won't get toggled accidentally and incorporates an LED so I can see if the PI is on or not. 
+I've set up a companion blog site to outline the details. I'll keep the code and necessary docs here, but put more general how-to details there.
 
 
 ## Wiring the power switch
