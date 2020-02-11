@@ -1,5 +1,5 @@
 node_modules/
 blog/node_modules/
-blog/_site/
 blog/package-lock.json
 site/
+site/*
