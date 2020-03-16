@@ -14,8 +14,8 @@ from email.utils import formatdate
 import RPi.GPIO as GPIO
 from picamera import PiCamera
 
-EMAIL_ADDR: "mail.baxter@gmail.com"
-EMAIL_SUBJECT: "Motion detected by RPi"
+EMAIL_ADDR: = "mail.baxter@gmail.com"
+EMAIL_SUBJECT = "Motion detected by RPi"
 
 
 def send_email(img_path):
