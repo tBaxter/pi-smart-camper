@@ -56,23 +56,15 @@ def send_email(img_path):
         # To do: log this error
         print("Error: %s" % error)
 
-
-
-def take_photo():
+def take_photo(cam):
     """
     Take the photo after motion detection
     """
     print("taking photo...")
-    cam = PiCamera()
-    cam.resolution = (800, 600)
     img_path = "/var/www/webapp/webcam/%s.jpg" % datetime.now().date()
     cam.capture(img_path)
     print('A photo has been taken')
     sleep(2)
-
-def print_motion():
-    print("motion detected")
-
 
 def start_motion_detection():
     """
@@ -81,8 +73,9 @@ def start_motion_detection():
     print("Motion detection initalizing...")
     pir = MotionSensor(PIR_SENSOR_PIN)
     print("Motion sensor connected on PIN %s" % pir.pin)
-    # there should be easier ways to do this
     print("Waiting for motion sensor to settle")
-    pir.when_motion = lambda x: print("Motion detected!")
+    cam = PiCamera()
+    cam.resolution = (800, 600)
+    pir.when_motion = lambda x: take_photo(cam)
     sleep(2)
         
