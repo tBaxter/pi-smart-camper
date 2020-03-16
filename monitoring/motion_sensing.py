@@ -16,7 +16,7 @@ from picamera import PiCamera
 
 EMAIL_ADDR = "mail.baxter@gmail.com"
 EMAIL_SUBJECT = "Motion detected by RPi"
-
+SENSOR_PIN = 7
 
 def send_email(img_path):
     """
@@ -74,5 +74,5 @@ def start_motion_detection():
     Configure and start motion detection.
     """
     print("Motion detection initalizing...")
-    pir = MotionSensor(7)
+    pir = MotionSensor(SENSOR_PIN)
     pir.when_motion = take_photo

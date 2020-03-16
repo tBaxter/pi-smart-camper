@@ -8,9 +8,8 @@ import RPi.GPIO as GPIO
 
 sys.path.append('../')
 
-from monitoring.motion_sensing import start_camera
+from monitoring.motion_sensing import start_motion_detection, SENSOR_PIN
 
-SENSOR_PIN = 7
 
 # By default these should be off. We'll set later
 cam_thread = None
@@ -39,7 +38,7 @@ def action(action):
     if action == "on":
         # Only do this if we haven't already.
         if not cam_thread:
-            cam_thread = Thread(start_camera())
+            cam_thread = Thread(start_motion_detection())
             cam_thread.start()
         message = "Camera is on."
     elif action == "off":
