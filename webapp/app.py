@@ -42,7 +42,7 @@ def action(action):
             cam_thread.start()
         message = "Camera is on."
     elif action == "off":
-        GPIO.remove_event_detect(SENSOR_PIN)
+        GPIO.remove_event_detect(PIR_SENSOR_PIN)
         GPIO.cleanup()
         cam_thread = None
         message = "Camera is off"
