@@ -70,6 +70,9 @@ def take_photo():
     print('A photo has been taken')
     sleep(2)
 
+def print_motion():
+    print("motion detected")
+
 
 def start_motion_detection():
     """
@@ -79,4 +82,4 @@ def start_motion_detection():
     pir = MotionSensor(PIR_SENSOR_PIN)
     print("Motion sensor connected on PIN %s" % pir.pin)
     print("Motion sensor is active: %s" % pir.is_active)
-    pir.when_motion = take_photo
+    pir.when_motion = print_motion
