@@ -83,9 +83,7 @@ def start_motion_detection():
     print("Motion sensor connected on PIN %s" % pir.pin)
     # there should be easier ways to do this
     print("Waiting for motion sensor to settle")
-    pir.wait_for_no_motion()
-    while True:
-        print("Motion sensor ready")
-        pir.wait_for_motion()
-        print("Motion detected!")
-        sleep(2)
+    pir.wait_for_motion()
+    print("Motion detected!")
+    sleep(2)
+        
