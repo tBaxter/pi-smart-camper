@@ -61,7 +61,7 @@ def motion_callback(cam):
     """
     img_path = "/home/pi/camphotos/%s.jpg" % datetime.now().date()
     cam.capture(img_path)
-    send_email(img_path)
+    #send_email(img_path)
 
 def start_camera():
     """
