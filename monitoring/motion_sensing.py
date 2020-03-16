@@ -64,7 +64,7 @@ def take_photo(cam):
     img_path = "/var/www/webapp/webcam/%s.jpg" % datetime.now().date()
     cam.capture(img_path)
     print('A photo has been taken')
-    sleep(2)
+    sleep(20)
 
 def start_motion_detection():
     """
@@ -77,5 +77,4 @@ def start_motion_detection():
     cam = PiCamera()
     cam.resolution = (800, 600)
     pir.when_motion = lambda x: take_photo(cam)
-    sleep(2)
         
