@@ -8,7 +8,9 @@ import RPi.GPIO as GPIO
 
 sys.path.append('../')
 
-from monitoring.motion_sensing import start_motion_detection, SENSOR_PIN
+from settings import PIR_SENSOR_PIN
+from monitoring.motion_sensing import start_motion_detection
+
 
 
 # By default these should be off. We'll set later
