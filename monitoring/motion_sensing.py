@@ -11,7 +11,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formatdate
 
-import RPi.GPIO as GPIO
+from gpiozero import MotionSensor
 from picamera import PiCamera
 
 EMAIL_ADDR = "mail.baxter@gmail.com"
@@ -54,25 +54,25 @@ def send_email(img_path):
         # To do: log this error
         print("Error: %s" % error)
 
-def motion_callback(cam):
-    """
-    Just create and store an image, using the time as filename,
-    then send it out.
-    """
-    print("Motion captured. Attempting to save image.")
-    img_path = "/var/www/webapp/webcam/%s.jpg" % datetime.now().date()
-    cam.capture(img_path)
-    #send_email(img_path)
 
-def start_camera():
+
+def take_photo():
     """
-    Configure and start the camera up on demand.
+    Take the photo after motion detection
     """
-    SENSOR_PIN = 7
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(SENSOR_PIN, GPIO.IN)
     cam = PiCamera()
     cam.resolution = (800, 600)
     img_path = "/home/pi/camphotos/%s.jpg" % datetime.now().date()
+    print("taking photo...")
+    cam.capture(img_path)
+    print('A photo has been taken')
+    sleep(2)
+
+
+def start_motion_detection():
+    """
+    Configure and start motion detection.
+    """
     print("Motion detection initalizing...")
-    GPIO.add_event_detect(SENSOR_PIN, GPIO.RISING, callback=lambda x: motion_callback(cam))
+    pir = MotionSensor(7)
+    pir.when_motion = take_photo
