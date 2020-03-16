@@ -5,7 +5,7 @@ from flask import Flask, render_template, redirect
 
 import RPi.GPIO as GPIO
 
-from camera import start_camera
+from monitoring.motion_sensing import start_camera
 
 SENSOR_PIN = 7
 
