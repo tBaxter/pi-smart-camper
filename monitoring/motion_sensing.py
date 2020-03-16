@@ -14,7 +14,7 @@ from email.utils import formatdate
 import RPi.GPIO as GPIO
 from picamera import PiCamera
 
-EMAIL_ADDR: = "mail.baxter@gmail.com"
+EMAIL_ADDR = "mail.baxter@gmail.com"
 EMAIL_SUBJECT = "Motion detected by RPi"
 
 
