@@ -62,10 +62,10 @@ def take_photo():
     """
     Take the photo after motion detection
     """
+    print("taking photo...")
     cam = PiCamera()
     cam.resolution = (800, 600)
-    img_path = "/home/pi/camphotos/%s.jpg" % datetime.now().date()
-    print("taking photo...")
+    img_path = "/var/www/webapp/webcam/%s.jpg" % datetime.now().date()
     cam.capture(img_path)
     print('A photo has been taken')
     sleep(2)
