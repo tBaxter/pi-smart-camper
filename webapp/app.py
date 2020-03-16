@@ -1,9 +1,12 @@
 import datetime
+import sys
 from threading import Thread
 
 from flask import Flask, render_template, redirect
 
 import RPi.GPIO as GPIO
+
+sys.path.append('../')
 
 from monitoring.motion_sensing import start_camera
 
