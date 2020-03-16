@@ -2,10 +2,10 @@
 # Commented out pins are for easy reference. 
 # If they're called anywhere, we'll uncomment.
 # The power button MUST use pins 5 & 6.
-#PIR_POWER            = 2 # (red)
+#PIR_POWER            = 4 # (red - 5v pin 4)
 #POWER_BUTTON_PIN     = 5 (white)
 #POWER_BUTTON_GROUND  = 6 (green)
-PIR_SENSOR_PIN        = 4 # (blue - pin 7 - GPIO4 )
-#PIR_GROUND           = 9 # (black)
+PIR_SENSOR_PIN        = 7 # (blue - pin 26 - GPIO7 )
+#PIR_GROUND           = 25 # (black - ground pin 25)
 #POWER_LED_PIN        = 12 (white)
 #POWER_LED_GROUND     = 14 (red)
