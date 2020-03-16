@@ -59,7 +59,7 @@ def motion_callback(cam):
     Just create and store an image, using the time as filename,
     then send it out.
     """
-    print("Saving image")
+    print("Motion captured. Attempting to save image.")
     img_path = "/var/www/webapp/webcam/%s.jpg" % datetime.now().date()
     cam.capture(img_path)
     #send_email(img_path)
