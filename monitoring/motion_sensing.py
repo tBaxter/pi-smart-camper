@@ -77,6 +77,6 @@ def start_motion_detection():
     """
     print("Motion detection initalizing...")
     pir = MotionSensor(PIR_SENSOR_PIN)
-    print("Motion sensor connected on PIN " % pir.pin)
-    print("Motion sensor is active: " % pir.is_active)
+    print("Motion sensor connected on PIN %s" % pir.pin)
+    print("Motion sensor is active: %s" % pir.is_active)
     pir.when_motion = take_photo
