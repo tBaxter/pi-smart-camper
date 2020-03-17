@@ -10,7 +10,7 @@ sys.path.append('../')
 
 from settings import PIR_SENSOR_PIN
 from monitoring.motion_sensing import start_motion_detection
-
+from monitoring.internal_temp import getCPUtemperature
 # By default these should be off. We'll set later
 cam_thread = None
 message = None
@@ -50,6 +50,32 @@ def action(action):
     else:
         message = "I don't know what you want me to do there."
     return redirect("/")
+
+@app.route("/pi-status")
+def status(action):
+    """ Output Pi status. """
+    GPIO.setmode(GPIO.BCM)
+
+    # Create a dictionary called pins to store the pin number, name, and pin state:
+    pins = {
+        3 : {'name' : 'Power button', 'state' : GPIO.LOW, 'physical pin': 5},
+        7 : {'name' : 'PIR SENSOR', 'state' : GPIO.LOW, 'phsyical pin': 26},
+        12 : {'name' : 'Power LED', 'state' : GPIO.LOW, 'physical pin': 12}
+    }
+    for pin in pins:
+        # For each pin, read the pin state and store it in the pins dictionary:
+        GPIO.setup(pin, GPIO.OUT)
+        GPIO.output(pin, GPIO.LOW)
+        pins[pin]['state'] = GPIO.input(pin)
+    cpu_temp = getCPUtemperature()
+
+    templateData = {
+      'pins' : pins,
+      'cpu_temp': cpu_temp
+    }
+    # Pass the template data into the template main.html and return it to the user
+    return render_template('status.html', **templateData)
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
