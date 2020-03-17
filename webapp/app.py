@@ -6,6 +6,7 @@ from flask import Flask, render_template, redirect
 
 import RPi.GPIO as GPIO
 
+GPIO.setmode(GPIO.BCM)
 sys.path.append('../')
 
 from settings import PIR_SENSOR_PIN
@@ -42,7 +43,6 @@ def action(action):
             cam_thread.start()
         message = "Camera is on."
     elif action == "off":
-        GPIO.setmode(GPIO.BCM)
         GPIO.remove_event_detect(PIR_SENSOR_PIN)
         GPIO.cleanup()
         cam_thread = None
@@ -51,11 +51,9 @@ def action(action):
         message = "I don't know what you want me to do there."
     return redirect("/")
 
-@app.route("/status")
+@app.route("/status/")
 def status(action):
     """ Output Pi status. """
-    GPIO.setmode(GPIO.BCM)
-
     # Create a dictionary called pins to store the pin number, name, and pin state:
     pins = {
         3 : {'name' : 'Power button', 'state' : GPIO.LOW, 'physical pin': 5},
