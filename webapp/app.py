@@ -31,7 +31,7 @@ def index():
    return render_template('index.html', **templateData)
 
 @app.route("/status/")
-def status(action):
+def status():
     """ Output Pi status. """
     # Create a dictionary called pins to store the pin number, name, and pin state:
     pins = {
