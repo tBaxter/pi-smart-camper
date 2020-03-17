@@ -51,7 +51,7 @@ def action(action):
         message = "I don't know what you want me to do there."
     return redirect("/")
 
-@app.route("/pi-status")
+@app.route("/status")
 def status(action):
     """ Output Pi status. """
     from monitoring.internal_temp import getCPUtemperature
