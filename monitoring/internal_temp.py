@@ -36,7 +36,7 @@ def getCPUtemperature():
     """
     res = os.popen("vcgencmd measure_temp").readline()
     temp = re.findall(r"\d+\.\d+", res)[0]
-    print("temp is {0}".format(temp)) # Comment/uncomment as needed
+    #print("temp is {0}".format(temp)) # Comment/uncomment as needed
     return temp
 
 def setPin(mode): # A little redundant function but useful if you want to add logging

@@ -10,7 +10,7 @@ sys.path.append('../')
 
 from settings import PIR_SENSOR_PIN
 from monitoring.motion_sensing import start_motion_detection
-from monitoring.internal_temp import getCPUtemperature
+
 # By default these should be off. We'll set later
 cam_thread = None
 message = None
@@ -54,6 +54,7 @@ def action(action):
 @app.route("/pi-status")
 def status(action):
     """ Output Pi status. """
+    from monitoring.internal_temp import getCPUtemperature
     GPIO.setmode(GPIO.BCM)
 
     # Create a dictionary called pins to store the pin number, name, and pin state:
