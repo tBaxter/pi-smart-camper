@@ -30,27 +30,6 @@ def index():
    }
    return render_template('index.html', **templateData)
 
-@app.route("/camera/<action>")
-def action(action):
-    """ Handles turning camera off and on based on user action. """
-    global cam_thread
-    global message
-
-    if action == "on":
-        # Only do this if we haven't already.
-        if not cam_thread:
-            cam_thread = Thread(start_motion_detection())
-            cam_thread.start()
-        message = "Camera is on."
-    elif action == "off":
-        GPIO.remove_event_detect(PIR_SENSOR_PIN)
-        GPIO.cleanup()
-        cam_thread = None
-        message = "Camera is off"
-    else:
-        message = "I don't know what you want me to do there."
-    return redirect("/")
-
 @app.route("/status/")
 def status(action):
     """ Output Pi status. """
@@ -75,6 +54,28 @@ def status(action):
     }
     # Pass the template data into the template main.html and return it to the user
     return render_template('status.html', **templateData)
+
+@app.route("/camera/<action>/")
+def action(action):
+    """ Handles turning camera off and on based on user action. """
+    global cam_thread
+    global message
+
+    if action == "on":
+        # Only do this if we haven't already.
+        if not cam_thread:
+            cam_thread = Thread(start_motion_detection())
+            cam_thread.start()
+        message = "Camera is on."
+    elif action == "off":
+        GPIO.remove_event_detect(PIR_SENSOR_PIN)
+        GPIO.cleanup()
+        cam_thread = None
+        message = "Camera is off"
+    else:
+        message = "I don't know what you want me to do there."
+    return redirect("/")
+
 
 
 if __name__ == '__main__':
