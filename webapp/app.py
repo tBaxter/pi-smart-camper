@@ -1,5 +1,5 @@
 import datetime
-import sys
+import os, re, sys
 from threading import Thread
 
 from flask import Flask, render_template, redirect
@@ -54,7 +54,6 @@ def action(action):
 @app.route("/status")
 def status(action):
     """ Output Pi status. """
-    from monitoring.internal_temp import getCPUtemperature
     GPIO.setmode(GPIO.BCM)
 
     # Create a dictionary called pins to store the pin number, name, and pin state:
@@ -68,11 +67,13 @@ def status(action):
         GPIO.setup(pin, GPIO.OUT)
         GPIO.output(pin, GPIO.LOW)
         pins[pin]['state'] = GPIO.input(pin)
-    cpu_temp = getCPUtemperature()
+    # get cpu temp
+    res = os.popen("vcgencmd measure_temp").readline()
+    temp = re.findall(r"\d+\.\d+", res)[0]
 
     templateData = {
       'pins' : pins,
-      'cpu_temp': cpu_temp
+      'cpu_temp': temp
     }
     # Pass the template data into the template main.html and return it to the user
     return render_template('status.html', **templateData)
