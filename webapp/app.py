@@ -20,19 +20,39 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-   global cam_thread
-   global message
+    """
+    Pulling together different resources for the main kiosk page.
+    Note that a lot of these are just initial values to populate the page.
+    We'll have JS update them in real-time.
+    
+    Where do these come from?
+    current_time     -  datetime module
+    current location - ??
+    weather
+    # plex?
+    # camera
+    # notes
+    # battery status?
+    # wifi status
+    # what else?
+    """
+    global message
+    global cam_thread
 
-   templateData = {
-      'title' : 'HELLO!',
+    templateData = {
       'message': message,
-      'cam_thread': cam_thread
-   }
-   return render_template('index.html', **templateData)
+      'current_time': datetime.datetime.now(),
+      'cam_status': cam_thread
+    }
+    return render_template('index.html', **templateData)
 
 @app.route("/status/")
 def status():
     """ Output Pi status. """
+    global cam_thread
+
+    # can we get power consumption?
+
     # Create a dictionary called pins to store the pin number, name, and pin state:
     pins = {
         3 : {'name' : 'Power button', 'state' : GPIO.LOW, 'physical pin': 5},
@@ -50,10 +70,12 @@ def status():
 
     templateData = {
       'pins' : pins,
-      'cpu_temp': temp
+      'cpu_temp': temp,
+      'cam_thread': cam_thread
     }
     # Pass the template data into the template main.html and return it to the user
     return render_template('status.html', **templateData)
+
 
 @app.route("/camera/<action>/")
 def action(action):
@@ -75,8 +97,6 @@ def action(action):
     else:
         message = "I don't know what you want me to do there."
     return redirect("/")
-
-
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

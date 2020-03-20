@@ -4,7 +4,7 @@ The goal is to use a Raspberry Pi to provide some modern-era amenities, monitori
 The camper in question is a 1972 Eco fiberglass egg, 
 which is a clone of the [Boler](http://www.boler-camping.com/portfolio/history-of-the-boler/).
 
-I'll keep the code and necessary docs here, but put more general how-to, details and a running progress log on https://www.smarter-camper.com.
+I'll keep the code and necessary docs here, but put more general how-to, details and a running progress log on https://www.smartercamper.com.
 
 Here's what's at least tentatively planned:
 * Plex, with a decent-size SSD drive to store movies
@@ -13,6 +13,8 @@ Here's what's at least tentatively planned:
 * A cellular modem to send messages if something is out of whack
 * An external power button, since the Pi will be hard-wired into the trailer.
 * A simple web server so I can monitor things with my phone.
+
+
 
 ## The cellular modem
 This is a giant pain, and I still don't know if I can actually get it to work or not.

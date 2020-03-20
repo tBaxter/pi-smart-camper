@@ -19,6 +19,7 @@
   </style>
 </head>
 <body>
+   
     {% if cam_thread %}
         <h1>The camera is currently on</h1>
         <button><a href="/camera/off">Turn it off</a></button>
@@ -26,12 +27,8 @@
         <h1>The camera is currently off</h1>
         <button><a href="/camera/on">Turn it on</a></button>
     {% endif %}
-
     <hr>
     <pre>
-        current state: {{ current_state }}
-        cam_active: {{ cam_active }}
-        cam_thread: {{ cam_thread }}
         {% if message %}
         <h2>{{ message }}</h2>
         {% endif %}
