@@ -7,3 +7,4 @@ pi_smart_camper.egg-info/
 Pipfile.lock
 build/
 dist/
+*/__pycache__/
