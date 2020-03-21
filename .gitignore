@@ -3,3 +3,7 @@ blog/node_modules/
 blog/package-lock.json
 site/
 site/*
+pi_smart_camper.egg-info/
+Pipfile.lock
+build/
+dist/

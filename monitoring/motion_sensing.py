@@ -12,7 +12,12 @@ from email.mime.text import MIMEText
 from email.utils import formatdate
 
 from gpiozero import MotionSensor
-from picamera import PiCamera
+
+# Mock picamera on non-pi systems
+try:
+    from picamera import PiCamera
+except ModuleNotFoundError:
+    from fake_rpi.picamera import PiCamera
 
 from settings import PIR_SENSOR_PIN
 

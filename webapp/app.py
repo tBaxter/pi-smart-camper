@@ -1,15 +1,24 @@
 import datetime
+import json
 import os, re, sys
 from threading import Thread
 
+import fake_rpi
+
 from flask import Flask, render_template, redirect
 
-import RPi.GPIO as GPIO
+# Because only the Pi has any concept of GPIO 
+# the real RPi.GPIO will blow up when trying to test on a Mac.
+try:
+    import RPi.GPIO as GPIO
+    GPIO.setmode(GPIO.BCM)
+except ModuleNotFoundError:
+    from fake_rpi.RPi import GPIO
 
-GPIO.setmode(GPIO.BCM)
 sys.path.append('../')
 
 from settings import PIR_SENSOR_PIN
+from modules.weather import get_weather
 from monitoring.motion_sensing import start_motion_detection
 
 # By default these should be off. We'll set later
@@ -26,23 +35,27 @@ def index():
     We'll have JS update them in real-time.
     
     Where do these come from?
-    current_time     -  datetime module
-    current location - ??
-    weather
+    current_time     - datetime module
+    current location - ipinfo/openweather
+    weather          - openweather
+    camera status    - monitoring/camera
+    wifi status      - iwparse
     # plex?
-    # camera
     # notes
     # battery status?
-    # wifi status
+    # water level?
     # what else?
     """
     global message
     global cam_thread
 
+    cam_status = 'on' if cam_thread else "off"
+
     templateData = {
       'message': message,
       'current_time': datetime.datetime.now(),
-      'cam_status': cam_thread
+      'cam_status': cam_status,
+      'weather': get_weather()
     }
     return render_template('index.html', **templateData)
 
@@ -77,12 +90,13 @@ def status():
     return render_template('status.html', **templateData)
 
 
-@app.route("/camera/<action>/")
-def action(action):
+@app.route("/camera/toggle-status/", methods=['GET'])
+def camera_action(action):
     """ Handles turning camera off and on based on user action. """
     global cam_thread
     global message
 
+    action = request.values['cam-status']
     if action == "on":
         # Only do this if we haven't already.
         if not cam_thread:

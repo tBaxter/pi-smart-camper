@@ -1,3 +1,4 @@
+from os import environ
 
 # Commented out pins are for easy reference. 
 # If they're called anywhere, we'll uncomment.
@@ -9,3 +10,6 @@ PIR_SENSOR_PIN        = 7 # (blue - pin 26 - GPIO7 )
 #PIR_GROUND           = 25 # (black - ground pin 25)
 #POWER_LED_PIN        = 12 (white)
 #POWER_LED_GROUND     = 14 (red)
+
+IPINFO_API_KEY = environ.get("IPINFO_API_KEY")
+OPENWEATHER_API_KEY = environ.get("OPENWEATHER_API_KEY")
