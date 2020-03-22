@@ -3,8 +3,6 @@ import json
 import os, re, sys
 from threading import Thread
 
-import fake_rpi
-
 from flask import Flask, render_template, redirect
 
 # Because only the Pi has any concept of GPIO 
@@ -13,6 +11,7 @@ try:
     import RPi.GPIO as GPIO
     GPIO.setmode(GPIO.BCM)
 except ModuleNotFoundError:
+    import fake_rpi
     from fake_rpi.RPi import GPIO
 
 sys.path.append('../')
