@@ -57,7 +57,7 @@ def index():
         wdata = weather['weather']
     except KeyError:
         print(weather)
-        print('key: %s' % OPENWEATHER_API_KEY)
+        print('key: %s' % os.environ.get("OPENWEATHER_API_KEY"))
 
     templateData = {
       'message': message,
