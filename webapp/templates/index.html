@@ -169,10 +169,18 @@ input:checked + .slider-v1::before {
         <label class="slider-v1" for="cam-status"></label>
       </form>
    </div>
+   <div>
+      <h2>WIFI Status</h2>
+      <meter max="{{ wifi.signal_total }}" value="{{ wifi.signal_level }}" title="{{ wifi.essid }}"></meter>
+      Details:
+      {% for k, v in wifi.items %}
+         {{ k }}: {{ v }}<br>
+      {% endfor %}
+   </div>
      <div>
         <div id="time-div">
-         <h2>It's {{ current_time.strftime('%-I:%M %p') }}</h2>
-         <h3>{{ current_time.strftime('%B %d') }}</h3>
+            <h2>It's {{ current_time.strftime('%-I:%M %p') }}</h2>
+            <h3>{{ current_time.strftime('%B %d') }}</h3>
          </div>
         {% if message %}
         <h2>{{ message }}</h2>

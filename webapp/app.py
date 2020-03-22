@@ -19,6 +19,7 @@ sys.path.append('../')
 
 from settings import PIR_SENSOR_PIN
 from modules.weather import get_weather
+from monitoring.wifi import get_network_details
 from monitoring.motion_sensing import start_motion_detection
 
 # By default these should be off. We'll set later
@@ -39,7 +40,7 @@ def index():
     current location - ipinfo/openweather
     weather          - openweather
     camera status    - monitoring/camera
-    wifi status      - iwparse
+    wifi status      - iw_parse
     # plex?
     # notes
     # battery status?
@@ -55,7 +56,8 @@ def index():
       'message': message,
       'current_time': datetime.datetime.now(),
       'cam_status': cam_status,
-      'weather': get_weather()
+      'weather': get_weather(),
+      'wifi': get_network_details()
     }
     return render_template('index.html', **templateData)
 
