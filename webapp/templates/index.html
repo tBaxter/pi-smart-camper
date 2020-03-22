@@ -150,6 +150,9 @@ input:checked + .slider-v1::before {
       margin: 1.5em 0;
       height: 2em;
    }
+   .fallback-meter span {
+      display:block;
+   }
 
    meter::-webkit-meter-bar,
    .fallback-meter span {
@@ -211,7 +214,7 @@ meter::-webkit-meter-even-less-good-value {
       <h3>Strength:</h3>
       <meter max="{{ wifi.signal_total }}" value="{{ wifi.signal_quality }}" title="{{ wifi.essid }}">
          <div class="fallback-meter">
-            <span style="width: {{ wifi.signal_quality }}"></span>
+            <span style="width: {{ wifi.signal_quality }}">{{ wifi.signal_quality }}%</span>
           </div>
       </meter>
 
