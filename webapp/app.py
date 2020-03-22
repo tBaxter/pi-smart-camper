@@ -51,6 +51,14 @@ def index():
 
     cam_status = 'on' if cam_thread else "off"
 
+    weather = get_weather()
+    # Strictly debugging:
+    try:
+        wdata = weather['weather']
+    except KeyError:
+        print(weather)
+        print('key: %s' % OPENWEATHER_API_KEY)
+
     templateData = {
       'message': message,
       'current_time': datetime.datetime.now(),
