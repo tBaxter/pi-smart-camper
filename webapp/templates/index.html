@@ -3,7 +3,14 @@
   <title>{{ title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+
+
+
      @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
+     :root {
+      --green: rgb(24, 160, 58);
+   }
      button {
        font-size: 150%;
      }
@@ -94,8 +101,8 @@
   width: 5.5em;
   height: 3em;
   cursor: pointer;
-  border-radius: 1.5em;
   transition: 350ms;
+  border-radius: 1.5em;
   background: linear-gradient(rgba(0, 0, 0, 0.09), rgba(255, 255, 255, 0)), #333;
 }
 
@@ -126,7 +133,7 @@
 }
 
 input:checked + .slider-v1::after {
-  background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.1)), #4c6;
+  background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.1)), var(--green);
   box-shadow: 0 0.08em 0.15em -0.1em rgba(0, 0, 0, 0.5) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), -7.25em 0 0 -0.25em rgba(0, 0, 0, 0.12);
 }
 
@@ -134,7 +141,35 @@ input:checked + .slider-v1::before {
   left: 3em;
 }
 
+   meter { 
+      /* Reset the default appearance */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      display: block;
+      width: 100%;
+   }
 
+   meter::-webkit-meter-bar {
+    background: #333;
+    border:1px solid #444;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+    border-radius: 1.5em;
+   }
+   meter::-webkit-meter-optimum-value {
+    background: var(--green);
+    border-radius: 1.5em;
+}
+
+meter::-webkit-meter-suboptimum-value {
+    background: #FFDB1A; /* Yellow */
+    border-radius: 1.5em;
+}
+
+meter::-webkit-meter-even-less-good-value {
+    background: #CC4600; /* Red */
+    border-radius: 1.5em;
+}
 
 
   </style>
@@ -170,10 +205,13 @@ input:checked + .slider-v1::before {
       </form>
    </div>
    <div>
-      <h2>Wifi Status</h2>
+      <h1>Wifi Status</h1>
+      <small>Current network:</small>
+      <h2>{{ wifi.essid }}</h2>
+      <h3>Strength:</h3>
       <meter max="{{ wifi.signal_total }}" value="{{ wifi.signal_level }}" title="{{ wifi.essid }}"></meter>
-      Details:
-      {% for k, v in wifi.items %}
+      Details:<br>
+      {% for k, v in wifi.items() %}
          {{ k }}: {{ v }}<br>
       {% endfor %}
    </div>
