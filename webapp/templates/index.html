@@ -3,9 +3,6 @@
   <title>{{ title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-
-
-
      @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
 
      :root {
@@ -206,14 +203,10 @@ meter::-webkit-meter-even-less-good-value {
    </div>
    <div>
       <h1>Wifi Status</h1>
-      <small>Current network:</small>
-      <h2>{{ wifi.essid }}</h2>
+      <small>Current network: {{ wifi.essid }}</small>
       <h3>Strength:</h3>
-      <meter max="{{ wifi.signal_total }}" value="{{ wifi.signal_level }}" title="{{ wifi.essid }}"></meter>
-      Details:<br>
-      {% for k, v in wifi.items() %}
-         {{ k }}: {{ v }}<br>
-      {% endfor %}
+      <meter max="{{ wifi.signal_total }}" value="{{ wifi.signal_quality }}" title="{{ wifi.essid }}"></meter>
+   
    </div>
      <div>
         <div id="time-div">

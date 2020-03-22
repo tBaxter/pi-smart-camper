@@ -64,7 +64,7 @@ def index():
       'current_time': datetime.datetime.now(),
       'cam_status': cam_status,
       'weather': get_weather(),
-      'wifi': get_network_details()
+      'wifi': get_network_details(),
     }
     return render_template('index.html', **templateData)
 
@@ -100,7 +100,7 @@ def status():
 
 
 @app.route("/camera/toggle-status/", methods=['GET'])
-def camera_action(action):
+def camera_action():
     """ Handles turning camera off and on based on user action. """
     global cam_thread
     global message

@@ -105,7 +105,7 @@ mock_data = [
         "frequency_units": "GHz",
         "channel": "6",
         "encryption": "off",
-        "signal_level": "32",
+        "signal_quality": "32",
         "signal_total": "70",
         "db": "-78"
     },
@@ -119,7 +119,7 @@ mock_data = [
         "frequency_units": "GHz",
         "channel": "11",
         "encryption": "wpa",
-        "signal_level": "43",
+        "signal_quality": "43",
         "signal_total": "100"
     },
     {
@@ -132,7 +132,7 @@ mock_data = [
         "frequency_units": "GHz",
         "channel": "11",
         "encryption": "wpa",
-        "signal_level": "62",
+        "signal_quality": "62",
         "signal_total": "100"
     }
 ]
