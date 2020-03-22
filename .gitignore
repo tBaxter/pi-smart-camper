@@ -8,6 +8,8 @@ Pipfile.lock
 build/
 dist/
 */__pycache__/
+modules/__pycache__/
+modules/__pycache__/*
 */__pycache__/*
 *.pyc
 /webcam/*

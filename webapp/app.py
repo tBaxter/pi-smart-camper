@@ -3,7 +3,7 @@ import json
 import os, re, sys
 from threading import Thread
 
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 
 # Because only the Pi has any concept of GPIO 
 # the real RPi.GPIO will blow up when trying to test on a Mac.
@@ -14,7 +14,9 @@ except ModuleNotFoundError:
     import fake_rpi
     from fake_rpi.RPi import GPIO
 
-sys.path.append('/var/www/')
+PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
+WEBAPP_DIR = os.path.abspath(os.path.join(PROJECT_DIR, os.path.pardir))
+sys.path.append(WEBAPP_DIR)
 
 from settings import PIR_SENSOR_PIN
 from modules.weather import get_weather
