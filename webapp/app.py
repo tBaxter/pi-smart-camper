@@ -14,7 +14,7 @@ except ModuleNotFoundError:
     import fake_rpi
     from fake_rpi.RPi import GPIO
 
-sys.path.append('/var/www/webapp/')
+sys.path.append('/var/www/')
 
 from settings import PIR_SENSOR_PIN
 from modules.weather import get_weather
