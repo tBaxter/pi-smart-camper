@@ -11,7 +11,7 @@ ipinfo==3.0.0
 itsdangerous==1.1.0
 Jinja2==2.11.1
 MarkupSafe==1.1.1
-numpy==1.18.2
+numpy>=1.16.6
 pi-smart-camper==0.0.2
 requests==2.23.0
 six==1.14.0
