@@ -155,13 +155,14 @@ input:checked + .slider-v1::before {
    }
 
    meter::-webkit-meter-bar,
-   .fallback-meter span {
+   .fallback-meter {
     background: #333;
     border:1px solid #444;
     box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
     border-radius: 1.5em;
    }
-   meter::-webkit-meter-optimum-value {
+   meter::-webkit-meter-optimum-value,
+   .fallback-meter span {
     background: var(--green);
     border-radius: 1.5em;
 }
