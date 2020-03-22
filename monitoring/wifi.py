@@ -9,7 +9,7 @@ def get_current_network():
     """
     try:
         
-        network = str(subprocess.check_output(['iwgetid', '-r'])).rstrip()
+        network = subprocess.check_output(['iwgetid', '-r']).decode('utf-8').rstrip()
     except FileNotFoundError:
         network = "Mock dev network"
     return network
