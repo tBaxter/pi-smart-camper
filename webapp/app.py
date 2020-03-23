@@ -114,13 +114,13 @@ def camera_action():
             cam_thread = Thread(start_motion_detection())
             cam_thread.start()
         message = "Camera is on."
-    elif action == "off":
+    else:
+        # if we didn't explicitly turn it on, then turn it off.
+        # also, unchecked checkboxes don't appear to turn up in request.values
         GPIO.remove_event_detect(PIR_SENSOR_PIN)
         GPIO.cleanup()
         cam_thread = None
         message = "Camera is off"
-    else:
-        message = "I don't know what you want me to do there."
     return redirect("/")
 
 if __name__ == '__main__':
