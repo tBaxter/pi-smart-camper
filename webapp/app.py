@@ -90,7 +90,11 @@ def status():
         pins[pin]['state'] = GPIO.input(pin)
     # get cpu temp
     res = os.popen("vcgencmd measure_temp").readline()
-    temp = re.findall(r"\d+\.\d+", res)[0]
+    try:
+        temp = re.findall(r"\d+\.\d+", res)[0]
+    except IndexError:
+        # since macs don't have vcgencmd, we'll just mock it for testing
+        temp = 999
 
     templateData = {
       'pins' : pins,
@@ -116,6 +120,7 @@ def camera_action():
     else:
         # if we didn't explicitly turn it on, then turn it off.
         # also, unchecked checkboxes don't appear to turn up in request.values
+        GPIO.setmode(GPIO.BCM)
         GPIO.remove_event_detect(PIR_SENSOR_PIN)
         GPIO.cleanup()
         cam_thread = None

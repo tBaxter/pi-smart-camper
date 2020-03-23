@@ -1,0 +1,14 @@
+<html>
+<head>
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}" />
+    <!-- TO-DO: Get local copy for when wifi is unavailable -->
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <main id="grid-container">
+        {% block main %}{% endblock %}
+    </main>
+</body>
+</html>

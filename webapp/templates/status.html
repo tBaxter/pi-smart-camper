@@ -1,28 +1,29 @@
-<!DOCTYPE html>
-<head>
-   <title>RPi hardware status</title>
-</head>
+{% extends "base.html" %}
+{% block title %}RPi hardware status{% endblock %}
+{% block main %}
 
-<body>
    <h1>RPi status</h1>
-
-   <h3>Camera state: {{ current_state }}</h3>
-   <ul>
-      <li>cam_active: {{ cam_active }}</li>
-      <li>cam_thread: {{ cam_thread }}</li>
-   </ul>
-
-   {% for pin in pins %}
-   <h3>{{ pins[pin].name }}
-   {% if pins[pin].state == true %}
-      is currently <strong>on</strong>
-   {% else %}
-      is currently <strong>off</strong>
-   {% endif %}
-    </h3>
-   {% endfor %}
-
-   <h2>CPU temp</h2>
-   <h3>{{ cpu_temp }}</h3>
-</body>
-</html>
+   <div>
+      <h2>Camera state: {{ current_state }}</h2>
+      <ul>
+         <li>cam_active: {{ cam_active }}</li>
+         <li>cam_thread: {{ cam_thread }}</li>
+      </ul>
+   </div>
+   <div>
+      <h1>Pins</h1>
+      {% for pin in pins %}
+         <h3>{{ pins[pin].name }}
+            {% if pins[pin].state == true %}
+               is currently <strong>on</strong>
+            {% else %}
+               is currently <strong>off</strong>
+            {% endif %}
+         </h3>
+      {% endfor %}
+   </div>
+   <div>
+      <h2>CPU temp</h2>
+      <h3>{{ cpu_temp }}</h3>
+   </div>
+{% endblock %}
