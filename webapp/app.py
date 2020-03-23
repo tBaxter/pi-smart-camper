@@ -107,8 +107,7 @@ def camera_action():
     global cam_thread
     global message
 
-    action = request.values['cam-status']
-    if action == "on":
+    if 'cam-status' in request.values:
         # Only do this if we haven't already.
         if not cam_thread:
             cam_thread = Thread(start_motion_detection())
