@@ -13,3 +13,6 @@ PIR_SENSOR_PIN        = 7 # (blue - pin 26 - GPIO7 )
 
 IPINFO_API_KEY = environ.get("IPINFO_API_KEY")
 OPENWEATHER_API_KEY = environ.get("OPENWEATHER_API_KEY")
+
+PLEX_USER = environ.get("PLEX_USER")
+PLEX_PASS = environ.get("PLEX_PASS")

@@ -21,6 +21,24 @@
          <dd>{{ weather.wind.speed|round|int }} mph</dd>
       </dl>
      </div>
+     <div id="plex">
+        <h1>Plex</h1>
+        {% if on_deck %}
+         <div class="thumbwrap">
+            <img src="{{ on_deck.thumb }}" class="thumb">
+            <h2>{{ on_deck.title }} <small>{{ on_deck.year }}</small></h2>
+         </div>
+      {% endif %}
+      <div class="unwatched">
+         <h3>Unwatched</h3>
+         <ul>
+         {% for m in unwatched %}
+            <li>{{ m.title }}</li>
+         {% endfor %}
+         </ul>
+         <h3><a href="/web/" class="plex-link">Go to Plex</a></h3>
+      </div>
+      </div>
      <div>
       <h1>Camera status</h1>
       <h2>The camera is currently {{ cam_status }}</h2>

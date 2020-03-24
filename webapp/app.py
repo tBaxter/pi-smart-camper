@@ -20,6 +20,7 @@ sys.path.append(WEBAPP_DIR)
 
 from settings import PIR_SENSOR_PIN
 from modules.weather import get_weather
+from modules.plex import currently_watching, unwatched
 from monitoring.wifi import get_network_details
 from monitoring.motion_sensing import start_motion_detection
 
@@ -42,14 +43,13 @@ def index():
     weather          - openweather
     camera status    - monitoring/camera
     wifi status      - iw_parse
-    # plex?
+    plex             - plexapi
     # notes
     # battery status?
     # water level?
     # what else?
     """
     global message
-    global cam_thread
 
     cam_status = 'on' if cam_thread else "off"
 
@@ -67,6 +67,8 @@ def index():
       'cam_status': cam_status,
       'weather': get_weather(),
       'wifi': get_network_details(),
+      'on_deck': currently_watching(),
+      'unwatched': unwatched()
     }
     return render_template('index.html', **templateData)
 

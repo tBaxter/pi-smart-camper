@@ -21,9 +21,9 @@ h1 { font-weight: normal }
 
 #grid-container {
     display: grid;
-    grid-template-columns: 33.3% auto auto;
+    grid-template-columns: auto 33% auto;
     grid-gap: 20px;
-    margin: 20px;
+    padding: 20px;
 }
 #grid-container > * {
     border:1px solid #333;
@@ -155,4 +155,47 @@ meter::-webkit-meter-suboptimum-value {
 meter::-webkit-meter-even-less-good-value {
     background: #CC4600; /* Red */
     border-radius: 1.5em;
+}
+.thumbwrap {
+    display: flex; /* or inline-flex */
+    flex-wrap: wrap;
+ }
+ .thumbwrap > * {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.875em;
+ }
+.thumbwrap small {
+    white-space: nowrap;
+    font-size: 1rem
+}
+.thumb {
+    background: #444;
+    display: block;
+    width: 60px;
+    height: 80px;
+    margin-right: 10px;
+}
+.unwatched {
+    font-size: 0.875rem;
+    padding-top: 1.5rem;
+}
+#plex {position: relative}
+.plex-link {
+    display: block; 
+    padding: 0.25rem 10px;
+    background: #ccc;
+    border: 1px solid #999;
+    border-radius: 1em;
+    text-align: right;
+    text-decoration: none;
+    background: linear-gradient(#333 10%, #444);
+    box-shadow: 0 0.1em 0.15em -0.05em rgba(255, 255, 255, 0.9) inset, 0 0.5em 0.3em -0.1em rgba(0, 0, 0, 0.25);
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    text-shadow: none;
+    color: #ccc
+
 }
