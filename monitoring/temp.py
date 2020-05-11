@@ -2,12 +2,12 @@
 import glob
 import time
 
-#import RPi.GPIO as GPIO
-#GPIO.setmode(GPIO.BCM)
-#GPIO.setup(24, GPIO.OUT) 
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(24, GPIO.OUT) 
 
-from gpiozero import Buzzer
-buzzer = Buzzer(24)
+#from gpiozero import Buzzer
+#buzzer = Buzzer(24)
 
 # Wiring:
 # Power: 3.3 or 5. Either is fine.
