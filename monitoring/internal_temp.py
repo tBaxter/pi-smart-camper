@@ -8,7 +8,6 @@ import RPi.GPIO as GPIO
 
 from time import sleep
 
-
 # Per instructions on the fan that came with our Pi, 
 # we wired black wire to pin 14 and red wire to pin 2
 # Pin 1 is low-power. We did not use it.
