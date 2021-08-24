@@ -9,7 +9,7 @@ gpiozero==1.5.1
 idna==2.9
 ipinfo==3.0.0
 itsdangerous==1.1.0
-Jinja2==2.11.1
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 numpy>=1.16.6
 requests==2.23.0
