@@ -4,7 +4,7 @@ chardet==3.0.4
 click==7.1.1
 colorzero==1.1
 fake-rpi>=0.6.2
-Flask==1.1.1
+Flask==2.3.2
 gpiozero==1.5.1
 idna==2.9
 ipinfo==3.0.0
